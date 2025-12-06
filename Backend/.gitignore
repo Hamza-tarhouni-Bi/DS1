@@ -1,0 +1,4 @@
+# Dossier des modules Node
+node_modules/
+# Fichier environnement
+.env

@@ -3,7 +3,7 @@ const Project = require("../models/Project");
 
 // CREATation mta3 projet
 
-exports.createProject = async (req, res) => {
+const createProject = async (req, res) => {
     try {
         const { nom, description, statut } = req.body;
 
@@ -27,7 +27,7 @@ exports.createProject = async (req, res) => {
 
 //get
 
-exports.getMyProjects = async (req, res) => {
+const getMyProjects = async (req, res) => {
     try {
         //bch tsir get mta3 les projet mta3 utilisateur mou3ayen
         const projects = await Project.find({ proprietaire: req.userId });
@@ -42,7 +42,7 @@ exports.getMyProjects = async (req, res) => {
 
 //GET ALL 
 
-exports.getAllProjects = async (req, res) => {
+const getAllProjects = async (req, res) => {
     try {
 
         const projects = await Project.find().populate("proprietaire");//ken l manager 3and l access bch ychouf les projet
@@ -57,7 +57,7 @@ exports.getAllProjects = async (req, res) => {
 
 //Mise a jour du projet
 
-exports.updateProject = async (req, res) => {
+const updateProject = async (req, res) => {
     try {
         const id = req.params.id;
 
@@ -74,7 +74,7 @@ exports.updateProject = async (req, res) => {
 
 //Suppression d un projet
 
-exports.deleteProject = async (req, res) => {
+const deleteProject = async (req, res) => {
     try {
         const id = req.params.id;
 
@@ -90,7 +90,7 @@ exports.deleteProject = async (req, res) => {
 
 //Recherche 
 
-exports.searchProjects = async (req, res) => {
+const searchProjects = async (req, res) => {
     try {
         const { q } = req.query;
 
@@ -105,3 +105,14 @@ exports.searchProjects = async (req, res) => {
         res.status(500).json({ message: "Erreur serveur", err });
     }
 };
+
+module.exports ={
+
+    createProject,
+    getAllProjects,
+    updateProject,
+    deleteProject,
+    searchProjects
+
+
+}

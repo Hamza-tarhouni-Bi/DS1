@@ -3,7 +3,7 @@ const Task = require("../models/Task");
 
 //Création mta3 task
 
-exports.createTask = async (req, res) => {
+const createTask = async (req, res) => {
   try {
     const { titre, description, statut, deadline, projet } = req.body;
 
@@ -28,7 +28,7 @@ exports.createTask = async (req, res) => {
 
 //get task selon l project
 
-exports.getTaskByProject = async (req, res) => {
+const getTaskByProject = async (req, res) => {
   try {
     const projectId = req.params.projetId;
 
@@ -44,7 +44,7 @@ exports.getTaskByProject = async (req, res) => {
 
 //mise a jour 
 
-exports.updateTask = async (req, res) => {
+const updateTask = async (req, res) => {
   try {
     const id = req.params.id;
 
@@ -60,7 +60,7 @@ exports.updateTask = async (req, res) => {
 
 //suppression
 
-exports.deleteTask = async (req, res) => {
+const deleteTask = async (req, res) => {
   try {
     const id = req.params.id;
 
@@ -76,7 +76,7 @@ exports.deleteTask = async (req, res) => {
 
 //Assignementt du task
 
-exports.assignTask = async (req, res) => {
+const assignTask = async (req, res) => {
   try {
     const taskId = req.params.id;
     const { userId } = req.body;
@@ -97,7 +97,7 @@ exports.assignTask = async (req, res) => {
 
 //Recherche du task
 
-exports.searchTasks = async (req, res) => {
+const searchTasks = async (req, res) => {
   try {
     const { q } = req.query;
 
@@ -111,3 +111,16 @@ exports.searchTasks = async (req, res) => {
     res.status(500).json({ message: "Erreur serveur", err });
   }
 };
+
+
+module.exports={
+  searchTasks,
+  assignTask,
+  deleteTask,
+  updateTask,
+  getTaskByProject,
+  createTask
+
+
+
+}
